@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch, Router} from 'react-router-dom';
+import CreateAccount from './create-acc';
 
 
 ReactDOM.render(
@@ -11,6 +12,7 @@ ReactDOM.render(
         <div>
             <Switch>
                 <Route exact path="/" component={App} />
+                <Route exact path="/createAccount" component={CreateAccount} />
             </Switch>
         </div>
     </BrowserRouter>, 
