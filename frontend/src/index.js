@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import CreateAccount from './create-acc';
+import LoginPage from './login-page';
+import ResuemDragDrop from './resume-dragdrop';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreateAccount from './components/create-acc';
 import LoginPage from './components/login-page';
@@ -21,6 +24,7 @@ ReactDOM.render(
                     <Route exact path="/" component={App} />
                     <Route exact path="/createAccount" component={CreateAccount} />
                     <Route exact path="/loginPage" component={LoginPage} />
+                      <Route exact path="/resumeDragDrop" component={ResuemDragDrop}/>
                 </Switch>
             </div>
         </BrowserRouter>
