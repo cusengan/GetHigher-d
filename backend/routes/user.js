@@ -1,20 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('./models/user');
+const { User } = require('../models/user');
 
 router.get('/', (req, res) => {
+    console.log('users');
     res.send('users');
 });
 
-router.post('/user', (req, res) => {
-    let user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
+router.get('/all', (req, res) => {
+    User.find().then((users) => {
+      res.send({users});
+    }).catch((e) =>{
+      res.status(400).send();
     });
+  });
 
+router.post('/register', (req, res) => {
+    let user = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password: req.body.password,
+        email: req.body.email
+    });
     user.save().then((user) => {
-        res.send(user);
+        res.send({user});
     }).catch((e) => {
         res.status(400).send();
     });

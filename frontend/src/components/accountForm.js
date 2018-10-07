@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { registerUser } from '../actions/userActions';
 class AccountForm extends Component{
     constructor(){
       super();
@@ -18,17 +20,21 @@ class AccountForm extends Component{
     handleChange(event){
       this.setState({
         [event.target.name]: event.target.value
-  
       });
     }
   
-    handleSubmit(event)
-    {
-      if(this.state.password !== this.state.confirm_password)
-      {
+    handleSubmit(event) {
+      if(this.state.password !== this.state.confirm_password) {
         alert('Your passwords don\'t match!');
+      } else {
+        this.props.registerUser({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password
+        });
+    }
         event.preventDefault();
-      }
     }
   
     render(){
@@ -89,10 +95,18 @@ class AccountForm extends Component{
                     required/>
             </div>
           </fieldset>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+          <button className="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
         </form>
       )
     }
   }
 
-  export default AccountForm;
+  function mapStateToProps({ user }) {
+      return { user };
+  }
+
+  function mapDispatchToProps(dispatch) {
+      return bindActionCreators({registerUser}, dispatch);
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(AccountForm);
