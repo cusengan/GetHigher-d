@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch, Router} from 'react-router-dom';
 import CreateAccount from './create-acc';
 import LoginPage from './login-page';
+import ResuemDragDrop from './resume-dragdrop';
 
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
                 <Route exact path="/" component={App} />
                 <Route exact path="/createAccount" component={CreateAccount} />
                 <Route exact path="/loginPage" component={LoginPage} />
+                <Route exact path="/resumeDragDrop" component={ResuemDragDrop}/>
             </Switch>
         </div>
     </BrowserRouter>, 
