@@ -4,9 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 class CreateAccount extends Component{
   render(){
     return(
-      <div width = '100%' height = '100%' style={{backgroundColor: '#f5f5f5'}}>
-        <Header/>
-        <AccountForm/>
+      <div style={{backgroundColor: '#f5f5f5'}}>
+          <Header/>
+          <AccountForm/>
       </div>
     )
   }
@@ -16,7 +16,7 @@ class Header extends Component{
   render(){
     return(
       <div>
-        <h1 align="center">GetHigher'd</h1>
+        <h1 align="center"><b>GetHigher'd</b></h1>
       </div>
     )
   }
@@ -42,44 +42,45 @@ class AccountForm extends Component{
     });
   }
 
-  handleSubmit(event) //to see if it works
+  handleSubmit(event)
   {
     console.log(this.state.firstName);
     console.log(this.state.lastName);
     console.log(this.state.email);
     console.log(this.state.password);
-    event.preventDefault();
   }
 
   render(){
-     return(
-       <form  onSubmit = {this.handleSubmit}> 
-         <div class="form-label-group">
-           <label for="inputFirstName">First Name:</label>
-             <input type="text" 
-                    name = "firstName"
-                    id="inputFirstName"
-                    class="form-control" 
-                    placeholder="First name"
-                    value = {this.state.firstName}
-                    onChange = {this.handleChange}
-                    required>
-             </input>
+    return(
+      <form onSubmit = {this.handleSubmit}>
+      <fieldset class ="form-group">
+      <legend align = "center">Create your GetHigher'd account</legend>
+        <div class = "form-row">
+          <div class="col mb-3">
+            <label class = "form-control-label" for="inputFirstName">First Name:</label>
+              <input type="text" 
+                      name = "firstName"
+                      id="inputFirstName"
+                      class="form-control" 
+                      placeholder="First name"
+                      value = {this.state.firstName}
+                      onChange = {this.handleChange}
+                      required/>
+            </div>
+            <div class="col mb-3">
+            <label class="form-control-label" for="inputLastName">Last Name:</label>
+              <input type="text"
+                      name="lastName"
+                      id="inputLastName" 
+                      class="form-control" 
+                      placeholder="Last name"
+                      value = {this.state.lastName}
+                      onChange = {this.handleChange}
+                      required/>
+          </div>
          </div>
-         <div class="form-label-group">
-           <label for="inputLastName">Last Name:</label>
-             <input type="text"
-                    name="lastName"
-                    id="inputLastName" 
-                    class="form-control" 
-                    placeholder="Last name"
-                    value = {this.state.lastName}
-                    onChange = {this.handleChange}
-                    required>
-             </input>
-         </div>
-         <div class="form-label-group">
-           <label for="inputEmail">Email address:</label>
+         <div class="form-label-group mb-3">
+           <label class = "form-control-label" for="inputEmail">Email address:</label>
              <input type="email"
                     name="email" 
                     id="inputEmail" 
@@ -87,11 +88,10 @@ class AccountForm extends Component{
                     placeholder="Email address"
                     value = {this.state.email}
                     onChange = {this.handleChange} 
-                    required autofocus>
-             </input>
+                    required autofocus/>
          </div>
-         <div class="form-label-group">
-           <label for="inputPassword">Password:</label>
+         <div class="form-label-group mb-5">
+           <label class = "form-control-label" for="inputPassword">Password:</label>
              <input type="password"
                     name="password" 
                     id="inputPassword" 
@@ -99,9 +99,9 @@ class AccountForm extends Component{
                     placeholder="Password"
                     value = {this.state.password}
                     onChange = {this.handleChange} 
-                    required>
-             </input>
-         </div>
+                    required/>
+          </div>
+        </fieldset>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
       </form>
     )
