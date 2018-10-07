@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch, Router} from 'react-router-dom';
 import CreateAccount from './create-acc';
+import LoginPage from './login-page';
 
 
 ReactDOM.render(
@@ -13,6 +14,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" component={App} />
                 <Route exact path="/createAccount" component={CreateAccount} />
+                <Route exact path="/loginPage" component={LoginPage} />
             </Switch>
         </div>
     </BrowserRouter>, 
