@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Route, Switch, Router} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreateAccount from './components/create-acc';
 import LoginPage from './components/login-page';
 import ReduxPromise from 'redux-promise';
@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+
 ReactDOM.render(
     <Provider store = {createStoreWithMiddleware(reducers)}>
         <BrowserRouter>
@@ -22,7 +23,7 @@ ReactDOM.render(
                     <Route exact path="/loginPage" component={LoginPage} />
                 </Switch>
             </div>
-    </BrowserRouter>
+        </BrowserRouter>
     </Provider>, 
 document.getElementById('root'));
 

@@ -2,9 +2,8 @@ require('./config/config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
-
+const mongoose = require('./db/mongoose');
 const app = express();
-// app.use(express.static('public'));
 const port = process.env.PORT;
 app.use(bodyParser.urlencoded({
     extended: true
