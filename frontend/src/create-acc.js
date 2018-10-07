@@ -28,7 +28,8 @@ class AccountForm extends Component{
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      confirm_password: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,10 +45,11 @@ class AccountForm extends Component{
 
   handleSubmit(event)
   {
-    console.log(this.state.firstName);
-    console.log(this.state.lastName);
-    console.log(this.state.email);
-    console.log(this.state.password);
+    if(this.state.password !== this.state.confirm_password)
+    {
+      alert('Your passwords don\'t match!');
+      event.preventDefault();
+    }
   }
 
   render(){
@@ -90,7 +92,7 @@ class AccountForm extends Component{
                     onChange = {this.handleChange} 
                     required autofocus/>
          </div>
-         <div class="form-label-group mb-5">
+         <div class="form-label-group mb-3">
            <label class = "form-control-label" for="inputPassword">Password:</label>
              <input type="password"
                     name="password" 
@@ -98,6 +100,17 @@ class AccountForm extends Component{
                     class="form-control" 
                     placeholder="Password"
                     value = {this.state.password}
+                    onChange = {this.handleChange} 
+                    required/>
+          </div>
+          <div class="form-label-group mb-3">
+           <label class = "form-control-label" for="inputConfirmPassword">Confirm Password:</label>
+             <input type="password"
+                    name="confirm_password" 
+                    id="inputConfirmPassword" 
+                    class="form-control" 
+                    placeholder="Confirm Password"
+                    value = {this.state.confirm_password}
                     onChange = {this.handleChange} 
                     required/>
           </div>
